@@ -41,6 +41,7 @@ SOURCES = \
   dbLayoutToNetlistWriterTests.cc \
   dbLayoutToNetlistReaderTests.cc \
   dbNetlistWriterTests.cc \
+  dbNetlistVerilogWriterTests.cc \
   dbCellVariantsTests.cc \
   dbDeepEdgesTests.cc \
   dbDeepEdgePairsTests.cc \

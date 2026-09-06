@@ -24,6 +24,7 @@
 #include "dbNetlist.h"
 #include "dbNetlistWriter.h"
 #include "dbNetlistSpiceWriter.h"
+#include "dbNetlistVerilogWriter.h"
 #include "dbNetlistReader.h"
 #include "dbNetlistSpiceReader.h"
 #include "dbNetlistSpiceReaderDelegate.h"
@@ -3139,6 +3140,82 @@ Class<db::NetlistSpiceReader> db_NetlistSpiceReader (db_NetlistReader, "db", "Ne
   "@/code\n"
   "\n"
   "This class has been introduced in version 0.26. It has been extended in version 0.27.1."
+);
+
+//  ------------------------------------------------------------------
+//  NetlistVerilogWriter
+
+static db::NetlistVerilogWriter *new_verilog_writer ()
+{
+  return new db::NetlistVerilogWriter ();
+}
+
+static int const_verilog_inout () { return db::VerilogInout; }
+static int const_verilog_input () { return db::VerilogInput; }
+static int const_verilog_output () { return db::VerilogOutput; }
+
+static void set_pin_direction (db::NetlistVerilogWriter *writer, const std::string &circuit, const std::string &pin, int dir)
+{
+  writer->set_pin_direction (circuit, pin, db::VerilogPinDirection (dir));
+}
+
+Class<db::NetlistVerilogWriter> db_NetlistVerilogWriter (db_NetlistWriter, "db", "NetlistVerilogWriter",
+  gsi::constructor ("new", &new_verilog_writer,
+    "@brief Creates a new Verilog writer.\n"
+  ) +
+  gsi::method ("with_comments=", &db::NetlistVerilogWriter::set_with_comments, gsi::arg ("f"),
+    "@brief Sets a value indicating whether to embed comments (true) or not (false).\n"
+    "The default is to embed comments."
+  ) +
+  gsi::method ("with_comments?", &db::NetlistVerilogWriter::with_comments,
+    "@brief Gets a value indicating whether to embed comments (true) or not (false).\n"
+  ) +
+  gsi::method_ext ("set_pin_direction", &set_pin_direction, gsi::arg ("circuit"), gsi::arg ("pin"), gsi::arg ("direction"),
+    "@brief Sets the direction of a pin of a circuit.\n"
+    "The direction is one of \\Inout, \\Input or \\Output. As the netlist model does not "
+    "provide pin directions, all pins are written as 'inout' unless a direction is given here."
+  ) +
+  gsi::method ("clear_pin_directions", &db::NetlistVerilogWriter::clear_pin_directions,
+    "@brief Clears the pin directions registered.\n"
+  ) +
+  gsi::constant ("Inout", &const_verilog_inout,
+    "@brief Specifies an 'inout' pin direction (the default).\n"
+  ) +
+  gsi::constant ("Input", &const_verilog_input,
+    "@brief Specifies an 'input' pin direction.\n"
+  ) +
+  gsi::constant ("Output", &const_verilog_output,
+    "@brief Specifies an 'output' pin direction.\n"
+  ),
+  "@brief Implements a netlist writer for structural Verilog.\n"
+  "\n"
+  "This writer produces a structural (gate-level) Verilog netlist from a netlist "
+  "object: circuits become modules, subcircuits become module instances with named "
+  "port connections and nets become wires.\n"
+  "\n"
+  "Use the Verilog writer like this:\n"
+  "\n"
+  "@code\n"
+  "writer = RBA::NetlistVerilogWriter::new\n"
+  "netlist.write(path, writer)\n"
+  "@/code\n"
+  "\n"
+  "Devices are not written as there is no canonical Verilog representation for them. "
+  "A netlist with devices is not a structural netlist in the Verilog sense. Devices "
+  "are skipped and noted as comments if comments are enabled.\n"
+  "\n"
+  "The netlist model does not carry pin directions as these cannot be derived from "
+  "the layout. Hence all pins are written as 'inout' by default. If the directions "
+  "are known - e.g. from a Liberty file - they can be supplied:\n"
+  "\n"
+  "@code\n"
+  "writer = RBA::NetlistVerilogWriter::new\n"
+  "writer.set_pin_direction(\"INV\", \"A\", RBA::NetlistVerilogWriter::Input)\n"
+  "writer.set_pin_direction(\"INV\", \"Y\", RBA::NetlistVerilogWriter::Output)\n"
+  "netlist.write(path, writer)\n"
+  "@/code\n"
+  "\n"
+  "This class has been introduced in version 0.30.13."
 );
 
 }
