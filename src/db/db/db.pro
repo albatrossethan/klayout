@@ -214,6 +214,7 @@ SOURCES = \
   dbLocalOperationUtils.cc \
   gsiDeclDbDeepShapeStore.cc \
   dbNetlistSpiceWriter.cc \
+  dbNetlistVerilogWriter.cc \
   dbNetlistWriter.cc \
   dbCellVariants.cc \
   dbDeepEdges.cc \
@@ -416,6 +417,7 @@ HEADERS = \
   dbLocalOperationUtils.h \
   dbDeepRegion.h \
   dbNetlistSpiceWriter.h \
+  dbNetlistVerilogWriter.h \
   dbNetlistWriter.h \
   dbCellVariants.h \
   dbDeepEdges.h \
