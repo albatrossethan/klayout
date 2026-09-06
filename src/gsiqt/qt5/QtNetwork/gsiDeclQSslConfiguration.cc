@@ -149,6 +149,7 @@ static void _call_f_diffieHellmanParameters_c0 (const qt_gsi::GenericMethod * /*
 }
 
 
+#if !defined(QT_FEATURE_dtls) || QT_FEATURE_dtls == 1
 // bool QSslConfiguration::dtlsCookieVerificationEnabled()
 
 
@@ -162,6 +163,7 @@ static void _call_f_dtlsCookieVerificationEnabled_c0 (const qt_gsi::GenericMetho
   __SUPPRESS_UNUSED_WARNING(args);
   ret.write<bool > ((bool)((QSslConfiguration *)cls)->dtlsCookieVerificationEnabled ());
 }
+#endif // QT_FEATURE_dtls
 
 
 // QVector<QSslEllipticCurve> QSslConfiguration::ellipticCurves()
@@ -614,6 +616,7 @@ static void _call_f_setDiffieHellmanParameters_4032 (const qt_gsi::GenericMethod
 }
 
 
+#if !defined(QT_FEATURE_dtls) || QT_FEATURE_dtls == 1
 // void QSslConfiguration::setDtlsCookieVerificationEnabled(bool enable)
 
 
@@ -632,6 +635,7 @@ static void _call_f_setDtlsCookieVerificationEnabled_864 (const qt_gsi::GenericM
   __SUPPRESS_UNUSED_WARNING(ret);
   ((QSslConfiguration *)cls)->setDtlsCookieVerificationEnabled (arg1);
 }
+#endif // QT_FEATURE_dtls
 
 
 // void QSslConfiguration::setEllipticCurves(const QVector<QSslEllipticCurve> &curves)
@@ -891,6 +895,7 @@ static void _call_f_defaultConfiguration_0 (const qt_gsi::GenericStaticMethod * 
 }
 
 
+#if !defined(QT_FEATURE_dtls) || QT_FEATURE_dtls == 1
 // static QSslConfiguration QSslConfiguration::defaultDtlsConfiguration()
 
 
@@ -904,6 +909,7 @@ static void _call_f_defaultDtlsConfiguration_0 (const qt_gsi::GenericStaticMetho
   __SUPPRESS_UNUSED_WARNING(args);
   ret.write<QSslConfiguration > ((QSslConfiguration)QSslConfiguration::defaultDtlsConfiguration ());
 }
+#endif // QT_FEATURE_dtls
 
 
 // static void QSslConfiguration::setDefaultConfiguration(const QSslConfiguration &configuration)
@@ -926,6 +932,7 @@ static void _call_f_setDefaultConfiguration_3068 (const qt_gsi::GenericStaticMet
 }
 
 
+#if !defined(QT_FEATURE_dtls) || QT_FEATURE_dtls == 1
 // static void QSslConfiguration::setDefaultDtlsConfiguration(const QSslConfiguration &configuration)
 
 
@@ -944,6 +951,7 @@ static void _call_f_setDefaultDtlsConfiguration_3068 (const qt_gsi::GenericStati
   __SUPPRESS_UNUSED_WARNING(ret);
   QSslConfiguration::setDefaultDtlsConfiguration (arg1);
 }
+#endif // QT_FEATURE_dtls
 
 
 // static QList<QSslCipher> QSslConfiguration::supportedCiphers()
@@ -1004,7 +1012,9 @@ static gsi::Methods methods_QSslConfiguration () {
   methods += new qt_gsi::GenericMethod (":caCertificates", "@brief Method QList<QSslCertificate> QSslConfiguration::caCertificates()\n", true, &_init_f_caCertificates_c0, &_call_f_caCertificates_c0);
   methods += new qt_gsi::GenericMethod (":ciphers", "@brief Method QList<QSslCipher> QSslConfiguration::ciphers()\n", true, &_init_f_ciphers_c0, &_call_f_ciphers_c0);
   methods += new qt_gsi::GenericMethod (":diffieHellmanParameters", "@brief Method QSslDiffieHellmanParameters QSslConfiguration::diffieHellmanParameters()\n", true, &_init_f_diffieHellmanParameters_c0, &_call_f_diffieHellmanParameters_c0);
+#if !defined(QT_FEATURE_dtls) || QT_FEATURE_dtls == 1
   methods += new qt_gsi::GenericMethod (":dtlsCookieVerificationEnabled", "@brief Method bool QSslConfiguration::dtlsCookieVerificationEnabled()\n", true, &_init_f_dtlsCookieVerificationEnabled_c0, &_call_f_dtlsCookieVerificationEnabled_c0);
+#endif // QT_FEATURE_dtls
   methods += new qt_gsi::GenericMethod (":ellipticCurves", "@brief Method QVector<QSslEllipticCurve> QSslConfiguration::ellipticCurves()\n", true, &_init_f_ellipticCurves_c0, &_call_f_ellipticCurves_c0);
   methods += new qt_gsi::GenericMethod ("ephemeralServerKey", "@brief Method QSslKey QSslConfiguration::ephemeralServerKey()\n", true, &_init_f_ephemeralServerKey_c0, &_call_f_ephemeralServerKey_c0);
   methods += new qt_gsi::GenericMethod ("isNull?", "@brief Method bool QSslConfiguration::isNull()\n", true, &_init_f_isNull_c0, &_call_f_isNull_c0);
@@ -1032,7 +1042,9 @@ static gsi::Methods methods_QSslConfiguration () {
   methods += new qt_gsi::GenericMethod ("setCaCertificates|caCertificates=", "@brief Method void QSslConfiguration::setCaCertificates(const QList<QSslCertificate> &certificates)\n", false, &_init_f_setCaCertificates_3438, &_call_f_setCaCertificates_3438);
   methods += new qt_gsi::GenericMethod ("setCiphers|ciphers=", "@brief Method void QSslConfiguration::setCiphers(const QList<QSslCipher> &ciphers)\n", false, &_init_f_setCiphers_2918, &_call_f_setCiphers_2918);
   methods += new qt_gsi::GenericMethod ("setDiffieHellmanParameters|diffieHellmanParameters=", "@brief Method void QSslConfiguration::setDiffieHellmanParameters(const QSslDiffieHellmanParameters &dhparams)\n", false, &_init_f_setDiffieHellmanParameters_4032, &_call_f_setDiffieHellmanParameters_4032);
+#if !defined(QT_FEATURE_dtls) || QT_FEATURE_dtls == 1
   methods += new qt_gsi::GenericMethod ("setDtlsCookieVerificationEnabled|dtlsCookieVerificationEnabled=", "@brief Method void QSslConfiguration::setDtlsCookieVerificationEnabled(bool enable)\n", false, &_init_f_setDtlsCookieVerificationEnabled_864, &_call_f_setDtlsCookieVerificationEnabled_864);
+#endif // QT_FEATURE_dtls
   methods += new qt_gsi::GenericMethod ("setEllipticCurves|ellipticCurves=", "@brief Method void QSslConfiguration::setEllipticCurves(const QVector<QSslEllipticCurve> &curves)\n", false, &_init_f_setEllipticCurves_3869, &_call_f_setEllipticCurves_3869);
   methods += new qt_gsi::GenericMethod ("setLocalCertificate|localCertificate=", "@brief Method void QSslConfiguration::setLocalCertificate(const QSslCertificate &certificate)\n", false, &_init_f_setLocalCertificate_2823, &_call_f_setLocalCertificate_2823);
   methods += new qt_gsi::GenericMethod ("setLocalCertificateChain|localCertificateChain=", "@brief Method void QSslConfiguration::setLocalCertificateChain(const QList<QSslCertificate> &localChain)\n", false, &_init_f_setLocalCertificateChain_3438, &_call_f_setLocalCertificateChain_3438);
@@ -1046,9 +1058,13 @@ static gsi::Methods methods_QSslConfiguration () {
   methods += new qt_gsi::GenericMethod ("swap", "@brief Method void QSslConfiguration::swap(QSslConfiguration &other)\n", false, &_init_f_swap_2373, &_call_f_swap_2373);
   methods += new qt_gsi::GenericMethod ("testSslOption", "@brief Method bool QSslConfiguration::testSslOption(QSsl::SslOption option)\n", true, &_init_f_testSslOption_c1878, &_call_f_testSslOption_c1878);
   methods += new qt_gsi::GenericStaticMethod (":defaultConfiguration", "@brief Static method QSslConfiguration QSslConfiguration::defaultConfiguration()\nThis method is static and can be called without an instance.", &_init_f_defaultConfiguration_0, &_call_f_defaultConfiguration_0);
+#if !defined(QT_FEATURE_dtls) || QT_FEATURE_dtls == 1
   methods += new qt_gsi::GenericStaticMethod (":defaultDtlsConfiguration", "@brief Static method QSslConfiguration QSslConfiguration::defaultDtlsConfiguration()\nThis method is static and can be called without an instance.", &_init_f_defaultDtlsConfiguration_0, &_call_f_defaultDtlsConfiguration_0);
+#endif // QT_FEATURE_dtls
   methods += new qt_gsi::GenericStaticMethod ("setDefaultConfiguration|defaultConfiguration=", "@brief Static method void QSslConfiguration::setDefaultConfiguration(const QSslConfiguration &configuration)\nThis method is static and can be called without an instance.", &_init_f_setDefaultConfiguration_3068, &_call_f_setDefaultConfiguration_3068);
+#if !defined(QT_FEATURE_dtls) || QT_FEATURE_dtls == 1
   methods += new qt_gsi::GenericStaticMethod ("setDefaultDtlsConfiguration|defaultDtlsConfiguration=", "@brief Static method void QSslConfiguration::setDefaultDtlsConfiguration(const QSslConfiguration &configuration)\nThis method is static and can be called without an instance.", &_init_f_setDefaultDtlsConfiguration_3068, &_call_f_setDefaultDtlsConfiguration_3068);
+#endif // QT_FEATURE_dtls
   methods += new qt_gsi::GenericStaticMethod ("supportedCiphers", "@brief Static method QList<QSslCipher> QSslConfiguration::supportedCiphers()\nThis method is static and can be called without an instance.", &_init_f_supportedCiphers_0, &_call_f_supportedCiphers_0);
   methods += new qt_gsi::GenericStaticMethod ("supportedEllipticCurves", "@brief Static method QVector<QSslEllipticCurve> QSslConfiguration::supportedEllipticCurves()\nThis method is static and can be called without an instance.", &_init_f_supportedEllipticCurves_0, &_call_f_supportedEllipticCurves_0);
   methods += new qt_gsi::GenericStaticMethod ("systemCaCertificates", "@brief Static method QList<QSslCertificate> QSslConfiguration::systemCaCertificates()\nThis method is static and can be called without an instance.", &_init_f_systemCaCertificates_0, &_call_f_systemCaCertificates_0);
